@@ -1,0 +1,20 @@
+<?php
+// Get the form data
+$name = $_POST['name'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$bio = $_POST['bio'];
+
+// Process the profile picture
+if (!empty($_FILES['profile-picture'])) {
+  $profilePicture = $_FILES['profile-picture']['tmp_name'];
+  $profilePictureName = $_FILES['profile-picture']['name'];
+  move_uploaded_file($profilePicture, '/path/to/profile/pictures/' . $profilePictureName);
+}
+
+// Save the data to a database
+// ...
+
+// Redirect to a success page
+header('Location: /profile-saved');
+?>
